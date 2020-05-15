@@ -184,6 +184,11 @@ client.on('message', message => {
 				} else {
 					message.channel.send("You must have manage server permissions to perform this.");
 				}
+			} else if(parse.action == "easteregg.uses") {
+				 message.channel.send("Current Features:\n```Get the Weather: .heysiri what's the weather in new york in C?\nTranslate Text: .heysiri translate Hello to Spanish?\nConvert Currencies: .heysiri convert 1 usd to rupees\nSearch the Web: .heysiri google discord.com\nTell a Joke: .heysiri tell me a joke\nPlay Music (experimental): .heysiri play Wonderwall by Oasis\nPause Music (experimental): .heysiri pause music\nSkip Music (experimental): .heysiri skip```");
+			} else if(parse.action == "easteregg.wwdccountdown") {
+				message.channel.send("You're asking the wrong person!");
+				message.channel.send("!countdown");
 			}
 		});
 	}
