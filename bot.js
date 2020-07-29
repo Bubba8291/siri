@@ -10,8 +10,12 @@ const https = require('https');
 Constants.DefaultOptions.ws.properties.$browser = `Discord iOS`;
 client.on("ready", () => {
         client.user.setActivity(".heysiri help");
-
+	setInterval(resetStatus, 3600000);
 });
+
+function resetStatus() {
+        client.user.setActivity(".heysiri help");
+}
 
 var servers = [];
 
@@ -165,19 +169,21 @@ client.on('message', message => {
 			}
 		});
 	} else if(command === "announce") {
-		let message2process = message.content.split(' ').splice(1).join(' ');
-		var firstWords = [];
-		for (var i=0;i<message2process.length;i++)
-		{
-		  var words = message2process.split(" ");
-		  firstWords.push(words[0]);
-		}
-		let id = firstWords[0];
-		let stringArr = message.content;
-		let text = stringArr.split(' ').splice(2).join(' ');
-		if(message.guild.id == "709543189643526237") {
-			let targetChannel = client.channels.cache.get(id);
-			if(targetChannel) targetChannel.send(text);
+		if(message.member.permissions.has('ADMINISTRATOR') || message.member.permissions.has('MANAGE_MESSAGES') || message.author.id == 706744803483975751) {
+			let message2process = message.content.split(' ').splice(1).join(' ');
+			var firstWords = [];
+			for (var i=0;i<message2process.length;i++)
+			{
+			  var words = message2process.split(" ");
+			  firstWords.push(words[0]);
+			}
+			let id = firstWords[0];
+			let stringArr = message.content;
+			let text = stringArr.split(' ').splice(2).join(' ');
+			if(message.guild.id == "709543189643526237") {
+				let targetChannel = client.channels.cache.get(id);
+				if(targetChannel) targetChannel.send(text);
+			}
 		}
 	} else if(command === "play" || command === "p") {
 		let message2process = message.content.split(' ').splice(1).join(' ');
