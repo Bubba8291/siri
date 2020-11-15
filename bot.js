@@ -23,8 +23,13 @@ var maintenance = false;
 
 client.on('message', message => {
         var prefix = ".";
+	if (message.content.toLowercase().contains('marco')) {
+		message.channel.send('<@390057183129370625>!');
+	} else if (message.content.toLowercase().contains('marko')) {
+		message.channel.send('<@390057183129370625>!');
+	}
         if (!message.content.startsWith(prefix) || message.author.bot) return;
-
+	
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
 	console.log(command);
